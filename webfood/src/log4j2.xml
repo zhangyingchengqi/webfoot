@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<!-- 日志输出到控制台 -->
+		<Console name="stdout" target="SYSTEM_OUT">
+			<!-- 日志的格式 -->
+			<PatternLayout pattern="%d %-5p %C{2} - %m%n" />
+		</Console>
+
+		<!-- 将日志输出成一个文件保存下来        保存的路径:    项目/log2/browe.log -->
+		<File name="fileout" fileName="logs/browe.log">
+			<PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+	</Appenders>
+
+
+	<Loggers>
+		<!-- logger:  日志对象,  配置    哪些  java的包中输出的日志要保存，   级别
+			日志级别:    none  -> fatal 致命  ->  error  错误  ->  info  信息  -> dubug调试信息   ->  all 所有信息 
+			
+			,因为这里我将level配置成了   info, 所以以   info(),  debug(), all()方法输出的信息将会被保存，其它的方法输出的信息丢失. 
+		 -->
+		<Logger name="com.yc" level="info" >	
+		</Logger>
+
+		<!-- 级别: all info debug error -->
+		<Root level="info">
+			<AppenderRef ref="stdout" />
+			<AppenderRef ref="fileout" />
+		</Root>
+	</Loggers>
+
+
+</Configuration>
